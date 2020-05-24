@@ -1,0 +1,22 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.header .form-inline {
+  margin-left: 20px;
+}
+.header .search {
+  margin-right: 10px;
+}
+
+.header .user {
+  /* margin: 0 10px; */
+}
+
+.header .user .nav-link{
+  display: inline-block;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "express-movie",
+  "description": "",
+  "main": "bin/www",
+  "license": "MIT",
+  "homepage": "https://leacoo.cn",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.5.0"
+  }
+}
