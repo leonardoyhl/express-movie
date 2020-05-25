@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%- site.name %> - <%- site.desc %></title>
+    <title><%- site.name -%> - <%- site.desc -%></title>
     <%- include("common-link.html"); %>
 </head>
+
 <body>
-    <%- include("header.html"); %>
-    
+    <%- include("header.html", {session: session}); %>
+    <!-- <div class="carousel slide carousel-home" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://m.media-amazon.com/images/M/MV5BODBjNjk3OWMtMTljZi00YThjLWJkNTgtZGIwYmJhYTk0ODM0XkEyXkFqcGdeQXVyNzI1NzMxNzM@._CR567,77,899,674._SY230_SX307_AL_.jpg" class="d-block" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://m.media-amazon.com/images/M/MV5BMTMwNWNhNjktYTE1Ni00NjEyLTg0Y2YtMmEyMTE2NWY3MDc3XkEyXkFqcGdeQXVyNDk2NTQ4MzM@._V1_UX275_CR0,0,275,120_AL_.jpg" class="d-block" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="" class="d-block" alt="...">
+            </div>
+        </div>
+    </div> -->
+    <div class="group">
+        <!-- <div class="group-title">Fan Favorites</div> -->
+        <div class="group-content movie-list">
+            <% movies.forEach(function(movie){ %>
+                <%- include('components/movie/card.html', movie); %>
+            <% }); %>
+        </div>
+    </div>
     <%- include("common-js.html"); %>
 </body>
+
 </html>

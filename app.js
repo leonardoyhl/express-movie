@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
@@ -18,7 +19,23 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// session middleware
+app.use(session({
+  secret :  'secret', // 对session id 相关的cookie 进行签名
+  resave : true,
+  saveUninitialized: false, // 是否保存未初始化的会话
+  cookie : {
+      maxAge : 1000 * 60 * 30, // 设置 session 的有效时间，单位毫秒
+  },
+}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// register site information
+app.use((req, res, next) => {
+  let siteConfig = require('./site.config');
+  req._site = siteConfig;
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

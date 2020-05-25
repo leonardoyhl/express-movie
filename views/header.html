@@ -15,9 +15,16 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
-        <div class="user">
-            <a href="/login" class="nav-link">Sign In</a>
-            <a href="/register" class="nav-link">Sign Up</a>
-        </div>
+        <% if (!session) { %>
+            <div class="user">
+                <a href="/login" class="nav-link btn-login">Sign In</a>
+                <a href="/register" class="nav-link btn-register">Sign Up</a>
+            </div>
+        <% }; %>
+        <% if (session) { %>
+            <div class="user">
+                <a href="#" class="nav-link btn-login"><%= session.username %></a>
+            </div>
+        <% }; %>
     </nav>
 </div>

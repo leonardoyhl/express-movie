@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | <%- site.name -%> - <%- site.desc -%></title>
+    <%- include("common-link.html"); %>
+</head>
+
+<body>
+    <%- include("header.html"); %>
+    <div class="container container-register">
+        <form action="/users" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" required class="form-control" id="username" aria-describedby="emailHelp">
+                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" required class="form-control" id="password">
+            </div>
+            <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <input type="password" name="password2" required class="form-control" id="password">
+            </div>
+            <!-- <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="checkbox">
+                <label class="form-check-label" for="checkbox">Check me out</label>
+            </div> -->
+            <button type="submit" class="btn btn-primary">Sign Up Now</button>
+        </form>
+    </div>
+    <%- include("common-js.html"); %>
+</body>
+
+</html>

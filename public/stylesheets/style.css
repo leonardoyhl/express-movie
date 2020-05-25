@@ -1,11 +1,15 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
 }
 
 a {
   color: #00B7FF;
 }
 
+.header {
+  background-color: #cccfd1 !important;
+}
 .header .form-inline {
   margin-left: 20px;
 }
@@ -13,10 +17,44 @@ a {
   margin-right: 10px;
 }
 
-.header .user {
-  /* margin: 0 10px; */
-}
-
 .header .user .nav-link{
   display: inline-block;
+}
+
+.header .user .btn-login {
+    color: #28a745;
+}
+.header .user .btn-register {
+    color: #333;
+}
+
+.carousel-home {
+    height: 500px;
+}
+
+.movie-list .card {
+    width: 250px;
+    margin: 0 10px;
+    float: left;
+}
+.movie-list::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.movie-list .card {
+    text-align: center;
+}
+.movie-list .card-text {
+    text-align: left;
+}
+.movie-list .card .btn {
+    color: #fff;
+}
+
+.container-register, .container-login {
+  margin: 0 auto;
+  padding: 20px;
+  width: 400px;
+  background-color: #f5f8f5;
 }
