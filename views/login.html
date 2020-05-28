@@ -10,8 +10,9 @@
 
 <body>
     <%- include("header.html"); %>
+    <div class="main">
     <div class="container container-login">
-        <form action="/users/login" method="post">
+        <form action="/login" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" required class="form-control" id="username" aria-describedby="emailHelp">
@@ -24,8 +25,9 @@
                 <input type="checkbox" class="form-check-input" id="checkbox">
                 <label class="form-check-label" for="checkbox">Check me out</label>
             </div> -->
-            <button type="submit" class="btn btn-primary">Sign In</button>
+            <button type="submit" class="btn btn-success">Sign In</button>
         </form>
+    </div>
     </div>
     <%- include("common-js.html"); %>
 </body>

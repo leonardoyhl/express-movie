@@ -1,9 +1,11 @@
 <div class="card">
-    <img src="https://m.media-amazon.com/images/M/MV5BMTE5NWUyMmYtMWE1My00ZDhiLWExZjEtMGJjYTA0OGYwZjIwXkEyXkFqcGdeQXVyODQ5NDUwMDk@._V1_UX210_CR0,2,210,311_.jpg"
+    <img src="<%- movie.img_url -%>"
         class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title"><%- name -%></h5>
-        <p class="card-text"><%- description -%></p>
-        <a href="/movies/1" class="btn btn-success">Detail</a>
+        <a href="/movie/<%- movie.id -%>">
+            <h5 class="card-title"><%- movie.name -%></h5>
+        </a>
+        <!-- <p class="card-text"><%- movie.introduction -%></p> -->
+        <!-- <a href="/movie/<%- movie.id -%>" class="btn btn-success">Detail</a> -->
     </div>
 </div>

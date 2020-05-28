@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <%- include("header.html", {session: session}); %>
+    <%- include("./header.html"); %>
     <!-- <div class="carousel slide carousel-home" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -23,12 +23,16 @@
             </div>
         </div>
     </div> -->
-    <div class="group">
-        <!-- <div class="group-title">Fan Favorites</div> -->
-        <div class="group-content movie-list">
-            <% movies.forEach(function(movie){ %>
-                <%- include('components/movie/card.html', movie); %>
-            <% }); %>
+    <div class="main">
+        <div class="container">
+            <div class="group">
+                <!-- <div class="group-title">Fan Favorites</div> -->
+                <div class="group-content movie-list">
+                    <% movies.forEach(function(movie){ %>
+                        <%- include('components/movie/card.html', {movie:movie}); %>
+                    <% }); %>
+                </div>
+            </div>
         </div>
     </div>
     <%- include("common-js.html"); %>

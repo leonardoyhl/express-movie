@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Center | <%- site.name -%> - <%- site.desc -%></title>
+    <%- include("../common-link.html"); %>
+</head>
+
+<body>
+    <%- include("../header.html"); %>
+    <div class="main">
+        <div class="container user-center">
+            <div class="row">
+                <div class="col-3">
+                    <%- include("../components/user/nav.html", {active: 'movie/new'}); %>
+                </div>
+                <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade" id="v-pills-home" role="tabpanel"
+                            aria-labelledby="v-pills-home-tab"></div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                            aria-labelledby="v-pills-profile-tab">
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                            aria-labelledby="v-pills-messages-tab">
+                        </div>
+                        <div class="tab-pane fade show active" id="v-pills-settings" role="tabpanel"
+                            aria-labelledby="v-pills-settings-tab">
+                            <%- include("../components/movie/new.html"); %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include("../common-js.html"); %>
+    <script>
+    </script>
+</body>
+
+</html>

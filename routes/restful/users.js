@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-let model = require('../models/user');
+let model = require('../../models/user');
 
 /** RESTful API */
 /* GET users listing. */
@@ -41,29 +41,15 @@ router.post('', function(req, res, next) {
 });
 
 /* POST user info. */
-router.post('/login', function(req, res, next) {
+router.put('', function(req, res, next) {
   let body = req.body;
-  model.selectByUsername(body.username, (err, row) => {
+  model.insertOne(body, (err) => {
     if (err) {
       res.json({
         code: 1,
         msg: err.message,
       });
-    } else if (!row) {
-      res.json({
-        code: 2,
-        msg: "User not found",
-      });
-    } else if (row.password != body.password) {
-      res.json({
-        code: 3,
-        msg: 'Username or password wrong',
-      });
     } else {
-      req.session.mime = {
-        username: row.username,
-        role: row.role,
-      };
       res.json({
         code: 0,
         msg: 'ok',

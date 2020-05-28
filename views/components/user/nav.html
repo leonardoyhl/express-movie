@@ -1,0 +1,29 @@
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <a class="nav-link <% if (active == 'index') { %>active<% } %>" id="v-pills-home-tab" href="/user"
+        role="tab" aria-controls="v-pills-home">Home</a>
+    <a class="nav-link <% if (active == 'profile') { %>active<% } %>" id="v-pills-profile-tab" href="/user/profile"
+        role="tab" aria-controls="v-pills-profile">Profile</a>
+    <% if (session.role == 'Administrator') { %>
+        <%# functions for administrator %>
+    <div class="nav-item">
+        <a class="nav-link" href="#movie" data-toggle="collapse" data-target="#collapseMovieSubmenu" role="button"
+            <% if (active == 'movie/list' || active == 'movie/new') { %> aria-expanded="true"<% } %>
+            <% if (active != 'movie/list' && active != 'movie/new') { %> aria-expanded="false"<% } %>
+            aria-controls="collapseMovieSubmenu">Movie Management
+            <svg class="bi bi-chevron-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+            </svg>
+        </a>
+        <ul class="collapse nav flex-column nav-sub" id="collapseMovieSubmenu">
+            <li>
+                <a class="nav-link <% if (active == 'movie/list') { %>active<% } %>" id="v-pills-profile-tab" href="/movie/list"
+                    role="tab" aria-controls="v-pills-profile">Movie List</a>
+            </li>
+            <li>
+                <a class="nav-link <% if (active == 'movie/new') { %>active<% } %>" id="v-pills-profile-tab" href="/movie/new"
+                    role="tab" aria-controls="v-pills-profile">New Movie</a>
+            </li>
+        </ul>
+    </div>
+    <% } %>
+</div>

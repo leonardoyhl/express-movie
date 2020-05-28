@@ -1,5 +1,5 @@
 <div class="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light container">
         <a class="navbar-brand" href="/"><%- site.name %></a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
@@ -10,21 +10,42 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
             </ul>
-            <form class="form-inline">
-                <input class="form-control search" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline" action="/movies">
+                <input class="form-control search" type="search" name="key" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
-        <% if (!session) { %>
-            <div class="user">
-                <a href="/login" class="nav-link btn-login">Sign In</a>
-                <a href="/register" class="nav-link btn-register">Sign Up</a>
+        <div class="collapse dropdown">
+            <span class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <svg class="bi bi-list-ul" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                </svg>
+            </span>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="/">Home</a>
+                <a class="dropdown-item" href="#">About</a>
             </div>
+        </div>
+        <% if (!session) { %>
+        <div class="user">
+            <a href="/login" class="nav-link btn-login">Sign In</a>
+            <a href="/register" class="nav-link btn-register">Sign Up</a>
+        </div>
         <% }; %>
         <% if (session) { %>
-            <div class="user">
-                <a href="#" class="nav-link btn-login"><%= session.username %></a>
+        <div class="user">
+            <div class="dropdown">
+                <a href="javascript:void(0);" class="nav-link btn-login dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= session.username %></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/user">User Center</a>
+                    <a class="dropdown-item btn-logout" href="javascript:void(0);">Sign Out</a>
+                </div>
             </div>
+        </div>
         <% }; %>
     </nav>
 </div>

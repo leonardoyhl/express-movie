@@ -74,13 +74,14 @@ module.exports = {
     /**
      * update some info of a user by its id
      * @param {Object} data 
-     * @param {err: Error} callback 
+     * @param {(err: Error)} callback 
      */
     updateById(data, callback) {
-        var statement = db.prepare(`INSERT INTO user 
-            (username, nickname, password, role, gender, age, country)
-            VALUES (?, ?, ?, ?, ?, ?, ?)`);
-        statement.run(data.username, data.nickname, data.password, data.role, data.gender, data.age, data.country);
+        var statement = db.prepare(`UPDATE user
+            SET username=?, nickname=?, password=?, role=?, gender=?, age=?, country=?
+            WHERE id=?`);
+        if (data.age === '') data.age = null;
+        statement.run(data.username, data.nickname, data.password, data.role, data.gender, data.age, data.country, data.id);
         statement.finalize(callback);
     }
 }

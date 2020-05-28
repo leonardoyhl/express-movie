@@ -1,0 +1,45 @@
+<table class="table table-movie">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Date</th>
+            <th scope="col">Country</th>
+            <th scope="col">Score</th>
+            <th scope="col">Introduction</th>
+            <th scope="col" class="operation">Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% movies.forEach(function(movie){ %>
+            <tr>
+                <th scope="row"><%= ++index %></th>
+                <td><%= movie.name %></td>
+                <td><%= movie.category %></td>
+                <td><%= movie.date %></td>
+                <td><%= movie.country %></td>
+                <td><%= movie.score %></td>
+                <td>
+                    <div class="movie-intro"><%= movie.introduction %></div>
+                </td>
+                <td class="operation">
+                    <div class="">
+                        <a class="btn-link" href="/movie/<%= movie.id %>" target="_blank">view</a>
+                        <span class="btn-link">edit</span>
+                        <span class="btn-link" onclick="deleteMovie(<%= movie.id %>)">delete</span>
+                    </div>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="/movie/list?page=<%= page-1 %>">Previous</a></li>
+        <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+        <li class="page-item"><a class="page-link" href="/movie/list?page=<%= page+1 %>">Next</a></li>
+    </ul>
+</nav>
