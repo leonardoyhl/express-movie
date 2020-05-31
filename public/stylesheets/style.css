@@ -69,13 +69,13 @@ table tr .operation .btn-link:hover {
     height: 500px;
 }
 
-.movie-list {
+.movie-container {
     padding: 20px 0;
 }
 
 .movie-list .card {
     width: 250px;
-    margin: 0 10px;
+    margin: 0 10px 20px;
     float: left;
 }
 .movie-list::after {
