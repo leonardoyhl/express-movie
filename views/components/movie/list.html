@@ -24,11 +24,9 @@
                     <div class="movie-intro"><%= movie.introduction %></div>
                 </td>
                 <td class="operation">
-                    <div class="">
-                        <a class="btn-link" href="/movie/<%= movie.id %>" target="_blank">view</a>
-                        <span class="btn-link">edit</span>
-                        <span class="btn-link" onclick="deleteMovie(<%= movie.id %>)">delete</span>
-                    </div>
+                    <a class="btn-link" href="/movie/<%= movie.id %>" target="_blank">view</a>
+                    <a class="btn-link" href="/movie/<%= movie.id %>/edit">edit</a>
+                    <span class="btn-link" onclick="deleteMovie(<%= movie.id %>)">delete</span>
                 </td>
             </tr>
         <% }); %>
@@ -41,5 +39,8 @@
         <li class="page-item"><a class="page-link" href="#">2</a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li> -->
         <li class="page-item"><a class="page-link" href="/movie/list?page=<%= page+1 %>">Next</a></li>
+        <li class="page-item">
+            <span style="line-height: 100%;"><%= page %>/<%= pageCount %></span>
+        </li>
     </ul>
 </nav>

@@ -6,19 +6,23 @@ let userModel = require('../models/user');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+    let key = req.query.key || '';    // query by key of movie name
     let page = {
-        page: 1,
-        size: 10,
+        page: req.query.page * 1 || 1,
+        size: 8,
     };
     let conditions = {
         page: page,
+        key: key,
     };
-    movieModel.select(conditions, (err, rows) => {
+    movieModel.selectWithPageOrderByScore(conditions, (err, o) => {
         // console.log(err, rows);
         res.render('index', {
             site: req._site,
             session: req.session.mine,
-            movies: rows,
+            movies: o.rows,
+            page: o.page,
+            pageCount: o.pageCount,
         });
     });
 });

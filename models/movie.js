@@ -19,6 +19,83 @@ module.exports = {
         });
     },
     /**
+     * query movies which matches conditions
+     * @param {Object} conditions 
+     * @param {(err: Error, o: {total: number, pageCount: number, page: number, size: number, rows: any[]})} callback 
+     */
+    selectWithPage(conditions, callback) {
+        let page = conditions.page.page,
+            pageSize = conditions.page.size;
+        let orders = conditions.orders;
+        let offset = (page - 1) * pageSize;
+        db.get(`SELECT count(id) as count FROM movie`, (err, row) => {
+            let count = row.count;
+            let pageCount = Math.floor((count + pageSize - 1) / pageSize);
+            console.log(count, pageCount, pageSize, (count + pageSize - 1));
+            if (count <= offset) {
+                callback(err, {
+                    total: count,
+                    pageCount: pageCount,   // total page count
+                    page: page,
+                    size: pageSize,
+                    rows: [],
+                });
+                return;
+            }
+            db.all(`SELECT * FROM movie limit ${pageSize} offset ${offset}`, (err, rows) => {
+                callback(err, {
+                    total: count,
+                    pageCount: pageCount,   // total page count
+                    page: page,
+                    size: pageSize,
+                    rows: rows,
+                });
+            });
+        });
+    },
+    /**
+     * query movies which matches conditions
+     * @param {Object} conditions 
+     * @param {(err: Error, o: {total: number, pageCount: number, page: number, size: number, rows: any[]})} callback 
+     */
+    selectWithPageOrderByScore(conditions, callback) {
+        let page = conditions.page.page,
+            pageSize = conditions.page.size;
+        let key = conditions.key;
+        let orders = conditions.orders;
+        let offset = (page - 1) * pageSize;
+        // some problem with SQL injection
+        console.log(`SELECT count(id) as count FROM movie WHERE name LIKE '%${key}%'`); // a%' and introduction LIKE '%s
+        // let statement = db.prepare(`SELECT count(id) as count FROM movie WHERE name LIKE '%?%'`);
+        // statement.get([key], (err, row) => {
+        db.get(`SELECT count(id) as count FROM movie WHERE name LIKE '%${key}%'`, (err, row) => {
+            console.log(err, row);
+            let count = row.count;
+            let pageCount = Math.floor((count + pageSize - 1) / pageSize);
+            if (pageCount == 0) pageCount = 1;
+            console.log(count, pageCount, pageSize, (count + pageSize - 1));
+            if (count <= offset) {
+                callback(err, {
+                    total: count,
+                    pageCount: pageCount,   // total page count
+                    page: page,
+                    size: pageSize,
+                    rows: [],
+                });
+                return;
+            }
+            db.all(`SELECT * FROM movie  WHERE name LIKE '%${key}%' ORDER BY score desc limit ${pageSize} offset ${offset}`, (err, rows) => {
+                callback(err, {
+                    total: count,
+                    pageCount: pageCount,   // total page count
+                    page: page,
+                    size: pageSize,
+                    rows: rows,
+                });
+            });
+        });
+    },
+    /**
      * query a movie by id
      * @param {number} id 
      * @param {(err: Error, row: Object)} callback 

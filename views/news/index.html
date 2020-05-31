@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- site.name -%> - <%- site.desc -%></title>
+    <%- include("../common-link.html"); %>
+</head>
+
+<body>
+    <%- include("../header.html", {active: 'News'}); %>
+    <div class="main">
+        <div class="container">
+            <div class="group">
+                <!-- <div class="group-title">Fan Favorites</div> -->
+                <div class="group-content">
+                    <div class="movie-list">
+                        <% news.forEach(function(item){ %>
+                            <%- include('../components/news/item.html', {item: item}); %>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include("../common-js.html"); %>
+</body>
+
+</html>

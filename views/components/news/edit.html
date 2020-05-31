@@ -1,0 +1,24 @@
+<div class="col-12 movie-form-container">
+    <form action="/news/edit" method="post" class="form-news" id="form_news">
+        <div class="form-group" style="display: none;">
+            <label for="id">ID</label>
+            <input type="number" name="id" required class="form-control" id="id" value="<%= item.id %>">
+        </div>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" required class="form-control" id="title" value="<%= item.title %>">
+        </div>
+        <div class="form-group">
+            <label for="img_url">Image URL</label>
+            <input type="text" name="img_url" required class="form-control" id="img_url" value="<%= item.img_url %>">
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea name="content" required class="form-control" id="content" rows="10"><%= item.content %></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="button" class="btn btn-outline-secondary btn-back">Back</button>
+    </form>
+    <div class="alert alert-success" role="alert">Successful!</div>
+    <div class="alert alert-danger" role="alert">Failed!</div>
+</div>

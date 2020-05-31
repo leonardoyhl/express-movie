@@ -1,0 +1,12 @@
+<div class="row news-item">
+    <div class="col news-img">
+        <img src="<%= item.img_url %>" alt="<%= item.title %>">
+    </div>
+    <div class="col">
+        <h3 class="news-title">
+            <a href="/news/<%= item.id %>"><%= item.title %></a>
+        </h3>
+        <div class="news-time"><%= new Date(item.time) %></div>
+        <div class="news-content"><%= item.content %></div>
+    </div>
+</div>

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <%- include("./header.html"); %>
+    <%- include("./header.html", {active: 'Home'}); %>
     <!-- <div class="carousel slide carousel-home" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -27,10 +27,18 @@
         <div class="container">
             <div class="group">
                 <!-- <div class="group-title">Fan Favorites</div> -->
-                <div class="group-content movie-list">
-                    <% movies.forEach(function(movie){ %>
-                        <%- include('components/movie/card.html', {movie:movie}); %>
-                    <% }); %>
+                <div class="group-content">
+                    <div class="movie-list">
+                        <% movies.forEach(function(movie){ %>
+                            <%- include('components/movie/card.html', {movie:movie}); %>
+                        <% }); %>
+                    </div>
+                    <nav aria-label="Page navigation example" style="text-align: center;">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="/?page=<%= page-1 %>">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="/?page=<%= page+1 %>">Next</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

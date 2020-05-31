@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie list | <%- site.name -%> - <%- site.desc -%></title>
+    <title>Movie detail | <%- site.name -%> - <%- site.desc -%></title>
     <%- include("../common-link.html"); %>
 </head>
 
@@ -14,12 +14,31 @@
         <div class="container">
             <div class="movie-detail">
                 <div class="movie-header">
-                    <h3><%= movie.name %></h3>
-                    <h2><%= movie.score %></h2>
+                    <div class="row">
+                        <h3 class="col"><%= movie.name %></h3>
+                        <h2 class="col-2 movie-star">
+                            <svg width="23" height="23" xmlns="http://www.w3.org/2000/svg" class="ipc-icon ipc-icon--star-inline" viewBox="0 0 24 24" fill="currentColor" role="presentation"><path d="M12 20.1l5.82 3.682c1.066.675 2.37-.322 2.09-1.584l-1.543-6.926 5.146-4.667c.94-.85.435-2.465-.799-2.567l-6.773-.602L13.29.89a1.38 1.38 0 0 0-2.581 0l-2.65 6.53-6.774.602C.052 8.126-.453 9.74.486 10.59l5.147 4.666-1.542 6.926c-.28 1.262 1.023 2.26 2.09 1.585L12 20.099z"></path></svg>
+                            <span><%- movie.score -%></span>
+                        </h2>
+                    </div>
                 </div>
                 <div class="movie-body">
-                    <img src="<%= movie.img_url %>" alt="">
-                    <div><%= movie.introduction %></div>
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="<%= movie.img_url %>" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-2 item-name">Date/Time: </div>
+                                <div class="col"><%- movie.date %></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 item-name">Category: </div>
+                                <div class="col"><%- movie.category %></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div><%- movie.introduction %></div>
                 </div>
             </div>
         </div>

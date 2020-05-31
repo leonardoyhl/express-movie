@@ -1,0 +1,19 @@
+<div class="col-12 item-form-container">
+    <form action="/news/new" method="post" class="form-news" id="form_news">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" required class="form-control" id="title" value="<%= item.title %>">
+        </div>
+        <div class="form-group">
+            <label for="img_url">Image URL</label>
+            <input type="text" name="img_url" required class="form-control" id="img_url" value="<%= item.img_url %>">
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea name="content" required class="form-control" id="content" rows="10"><%= item.content %></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    <div class="alert alert-success" role="alert">Successful!</div>
+    <div class="alert alert-danger" role="alert">Failed!</div>
+</div>

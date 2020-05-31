@@ -1,0 +1,35 @@
+<table class="table table-movie">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col" style="width: 200px;">Date</th>
+            <th scope="col">Title</th>
+            <!-- <th scope="col">Content</th> -->
+            <th scope="col" class="operation">Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% news.forEach(function(item){ %>
+            <tr>
+                <th scope="row"><%= ++index %></th>
+                <td><%= new Date(item.time) %></td>
+                <td><%= item.title %></td>
+                <!-- <td class="movie-intro"><%= item.content %></td> -->
+                <td class="operation">
+                    <a class="btn-link" href="/news/<%= item.id %>" target="_blank">view</a>
+                    <a class="btn-link" href="/news/<%= item.id %>/edit">edit</a>
+                    <span class="btn-link" onclick="deleteNews(<%= item.id %>)">delete</span>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="/news/list?page=<%= page-1 %>">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="/news/list?page=<%= page+1 %>">Next</a></li>
+        <li class="page-item">
+            <span style="line-height: 100%;"><%= page %>/<%= pageCount %></span>
+        </li>
+    </ul>
+</nav>

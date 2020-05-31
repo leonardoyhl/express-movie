@@ -1,5 +1,9 @@
 <div class="col-12 movie-form-container">
-    <form action="/movie/new" method="post" class="form-movie" id="form_movie">
+    <form action="/movie/edit" method="post" class="form-movie" id="form_movie">
+        <div class="form-group" style="display: none;">
+            <label for="id">ID</label>
+            <input type="number" name="id" required class="form-control" id="id" value="<%= movie.id %>">
+        </div>
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" name="name" required class="form-control" id="name" value="<%= movie.name %>">
@@ -8,8 +12,12 @@
             <label for="category">Category</label>
             <!-- <input type="text" name="category" required class="form-control" id="name" value="<%= movie.category %>"> -->
             <select name="category" required class="form-control" id="category">
-                <% categories.forEach(function(category){ %>
+                <% categories.forEach(function(category) { %>
+                    <% if (category.name == movie.category) { %>
+                    <option value="<%= category.name %>" selected><%= category.name %></option>
+                    <% } else { %>
                     <option value="<%= category.name %>"><%= category.name %></option>
+                    <% } %>
                 <% }); %>
               </select>
         </div>
@@ -34,6 +42,7 @@
             <textarea name="introduction" required class="form-control" id="introduction" rows="10"><%= movie.introduction %></textarea>
         </div>
         <button type="submit" class="btn btn-success">Submit</button>
+        <button type="button" class="btn btn-outline-secondary btn-back">Back</button>
     </form>
     <div class="alert alert-success" role="alert">Successful!</div>
     <div class="alert alert-danger" role="alert">Failed!</div>

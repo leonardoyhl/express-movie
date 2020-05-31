@@ -9,6 +9,7 @@ var debug = require('debug')('express-movie:server');
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
 var movieRouter = require('./routes/movie');
+var newsRouter = require('./routes/news');
 // RESTful API
 var usersRouter = require('./routes/restful/users');
 var moviesRouter = require('./routes/restful/movies');
@@ -45,6 +46,7 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/movie', movieRouter);
+app.use('/news', newsRouter);
 app.use('/users', usersRouter);
 app.use('/movies', moviesRouter);
 
